@@ -36,20 +36,20 @@ public class BookStoreTests {
 
         step("Generate token", () ->
                 token =
-                given()
-                        .filter(customLogFilter().withCustomTemplates())
-                        .contentType("application/json")
-                        .accept("application/json")
-                        .body(userData.toString())
-                        .when()
-                        .log().uri()
-                        .log().body()
-                        .post("https://demoqa.com/Account/v1/GenerateToken")
-                        .then()
-                        .log().body()
-                        .body("status", is("Success"))
-                        .body("result", is("User authorized successfully."))
-                        .extract().response().path("token")
+                        given()
+                                .filter(customLogFilter().withCustomTemplates())
+                                .contentType("application/json")
+                                .accept("application/json")
+                                .body(userData.toString())
+                                .when()
+                                .log().uri()
+                                .log().body()
+                                .post("https://demoqa.com/Account/v1/GenerateToken")
+                                .then()
+                                .log().body()
+                                .body("status", is("Success"))
+                                .body("result", is("User authorized successfully."))
+                                .extract().response().path("token")
         );
 
         step("Add book in User's Collection", () ->
